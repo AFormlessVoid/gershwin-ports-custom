@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Categories=X-GNUstep;
+Name=Gorm
+StartupWMClass=Gorm
+Comment=[GNUstep | Graphical] Object Relationship Modeller
+Icon=/Local/Applications/Gorm.app/Resources/Gorm.tiff
+Exec=//System/Library//Tools/openapp Gorm
+MimeType=

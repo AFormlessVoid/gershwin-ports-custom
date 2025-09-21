@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Categories=X-GNUstep;
+Name=Workspace
+StartupWMClass=Workspace
+Comment=GWorkspace fork for Gershwin
+Icon=/System/Applications/Workspace.app/Resources/FileManager.tiff
+Exec=//System/Library//Tools/openapp GWorkspace
+MimeType=

@@ -1,0 +1,12 @@
+prefix=/usr/local
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+exec_prefix=/usr/local/libexec
+
+Name: appmenu-gtk2-parser
+Description: GtkMenuShell to GMenuModel parser
+Version: 25.04
+Requires: gtk+-2.0 >= 2.24.0
+Libs: -L${libdir} -lappmenu-gtk2-parser
+Cflags: -I${includedir} -I${includedir}/appmenu-gtk-parser

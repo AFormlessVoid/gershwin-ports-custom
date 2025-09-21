@@ -1,0 +1,9 @@
+{
+  NOTE = "Automatically generated, do not edit!";
+  NSExecutable = "ProjectCenter";
+  NSMainNibFile = "";
+  NSPrincipalClass = "ProjectCenter";
+  Classes = 
+("PCBundleManager", "PCEditorManager", "PCMakefileFactory", "PCFileManager", "PCAddFilesPanel", "PCFileCreator", "PCSaveModified", "PCProjectManager", "PCProject", "PCProjectWindow", "PCProjectInspector", "PCProjectBuilder", "PCProjectBuilderOptions", "PCProjectBuilderPanel", "PCProjectLauncher", "PCProjectLauncherPanel", "PCProjectEditor", "PCProjectBrowser", "PCProjectLoadedFiles", "PCProjectLoadedFilesPanel", "PCButton", "PCFileNameField", "PCFileNameIcon", "PCLogController", "PCAuxiliaryWindow")
+  ;
+}

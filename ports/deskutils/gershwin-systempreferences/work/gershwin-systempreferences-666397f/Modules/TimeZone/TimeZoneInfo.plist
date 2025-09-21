@@ -1,0 +1,9 @@
+
+{
+  CFBundleIdentifier = org.gnustep.timezonemodule;
+  NSExecutable = TimeZone;
+  NSMainNibFile = TimeZone;
+  NSPrefPaneIconFile = "TimeZone.tiff";
+  NSPrefPaneIconLabel = "Date & Time";
+  NSPrincipalClass = TimeZone;
+}

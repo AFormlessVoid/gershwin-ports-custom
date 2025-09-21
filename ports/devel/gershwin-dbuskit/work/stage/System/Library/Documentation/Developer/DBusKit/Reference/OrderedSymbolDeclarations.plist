@@ -1,0 +1,108 @@
+{
+    "(DKStruct)" = (
+	"-isDBusStruct"
+    );
+    "(DKVariant)" = (
+	"-isDBusVariant"
+    );
+    DKDBus = (
+	"+busWithBusType:",
+	"+sessionBus",
+	"+systemBus"
+    );
+    DKDoubleNumber = (
+	"+numberWithDouble:",
+	"-initWithDouble:"
+    );
+    DKFloatNumber = (
+	"+numberWithFloat:",
+	"-initWithFloat:"
+    );
+    DKInt16Number = (
+	"+numberWithInt16:",
+	"-initWithInt16:"
+    );
+    DKInt32Number = (
+	"+numberWithInt32:",
+	"-initWithInt32:"
+    );
+    DKInt64Number = (
+	"+numberWithInt64:",
+	"-initWithInt64:"
+    );
+    DKInt8Number = (
+	"+numberWithInt8:",
+	"-initWithInt8:"
+    );
+    DKNotificationCenter = (
+	"+sessionBusCenter",
+	"+systemBusCenter",
+	"+centerForBusType:",
+	"-addObserver:selector:name:object:",
+	"-addObserver:selector:name:sender:destination:",
+	"-addObserver:selector:signal:interface:sender:destination:",
+	"-addObserver:selector:signal:interface:sender:destination:filter:atIndex:",
+	"-addObserver:selector:signal:interface:sender:destination:filtersAndIndices:,...",
+	"-addObserver:selector:signal:interface:sender:destination:filters:",
+	"-removeObserver:",
+	"-removeObserver:name:object:",
+	"-removeObserver:name:sender:destination:",
+	"-removeObserver:signal:interface:object:",
+	"-removeObserver:signal:interface:sender:destination:",
+	"-removeObserver:signal:interface:sender:destination:filter:atIndex:",
+	"-removeObserver:signal:interface:sender:destination:filtersAndIndices:,...",
+	"-removeObserver:signal:interface:sender:destination:filters:",
+	"-postNotification:",
+	"-postNotificationName:object:",
+	"-postSignalName:interface:object:",
+	"-postNotificationName:object:userInfo:",
+	"-postSignalName:interface:object:userInfo:",
+	"-registerNotificationName:asSignal:inInterface:"
+    );
+    DKPort = (
+	"+portForBusType:",
+	"+sessionBusPort",
+	"+systemBusPort",
+	"+enableWorkerThread",
+	"-initWithRemote:",
+	"-initWithRemote:onBus:"
+    );
+    DKPortNameServer = (
+	"+sharedSystemBusPortNameServer",
+	"+sharedSessionBusPortNameServer",
+	"+sharedPortNameServerForBusType:",
+	"-portForName:",
+	"-registerPort:name:",
+	"-registerPort:name:flags:",
+	"-removePortForName:"
+    );
+    DKProxy = (
+	"+proxyWithPort:path:",
+	"+proxyWithService:path:bus:",
+	"-initWithPort:path:",
+	"-initWithService:path:bus:",
+	"-initWithEndpoint:andService:andPath:",
+	"-hasSameScopeAs:",
+	"-setPrimaryDBusInterface:"
+    );
+    DKUInt16Number = (
+	"+numberWithUInt16:",
+	"-initWithUInt16:"
+    );
+    DKUInt32Number = (
+	"+numberWithUInt32:",
+	"-initWithUInt32:"
+    );
+    DKUInt64Number = (
+	"+numberWithUInt64:",
+	"-initWithUInt64:"
+    );
+    DKUInt8Number = (
+	"+numberWithUInt8:",
+	"-initWithUInt8:"
+    );
+    DKVariant = (
+	"+variantWithObject:",
+	"-initWithObject:"
+    );
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- © 2005-2006 Christopher Armstrong.
+
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2, as published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled "GNU Free Documentation License".
+
+This documentation is provided on an "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND USEFULNESS
+OF THE DOCUMENTATION IS WITH YOU (THE LICENSEE). IN NO EVENT WILL THE COPYRIGHT
+HOLDERS BE LIABLE FOR DAMAGES, INCLUDING ANY DIRECT, INDIRECT,
+SPECIAL, GENERAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF
+THE USE OR INABILITY TO USE THIS DOCUMENTATION (INCLUDING BUT NOT
+LIMITED TO LOSS OF DATA, USE, OR PROFITS; PROCUREMENT OF SUBSTITUTE
+GOODS AND SERVICES; OR BUSINESS INTERUPTION) HOWEVER CAUSED, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<title>matrix (Using the GNUstep AppKit 0.1)</title>
+
+<meta name="description" content="matrix (Using the GNUstep AppKit 0.1)">
+<meta name="keywords" content="matrix (Using the GNUstep AppKit 0.1)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="conceptindex.html" rel="index" title="conceptindex">
+<link href="index.html" rel="up" title="Top">
+<link href="browsercontrols.html" rel="next" title="browsercontrols">
+<link href="outlineviews.html" rel="prev" title="outlineviews">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="matrix">
+<div class="nav-panel">
+<p>
+Next: <a href="browsercontrols.html" accesskey="n" rel="next">Browsers</a>, Previous: <a href="outlineviews.html" accesskey="p" rel="prev">Outline Views</a>, Up: <a href="index.html" accesskey="u" rel="up">Using the GNUstep AppKit</a> &nbsp; [<a href="conceptindex.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Matrix-Controls-1"><span>11 Matrix Controls<a class="copiable-link" href="#Matrix-Controls-1"> &para;</a></span></h2>
+<a class="anchor" id="Matrix-Controls"></a><a class="index-entry-id" id="index-matrices_002c-matrix-control"></a>
+<a class="index-entry-id" id="index-matrix-controls_002c-definition"></a>
+<p>Matrix controls are groups of cells, arranged in a table like format, 
+with each cell indexed by row and column. It is similar to a table view, but differs in that it doesn&rsquo;t have a predefined cell class. Instead, it uses objects of classes derived from NSCell to be implemented. A matrix is implemented by the NSMatrix class.<a class="footnote" id="DOCF14" href="#FOOT14"><sup>14</sup></a>
+</p>
+<p>It takes it&rsquo;s implementation from NSControl, and hence what applies to controls also applies to matrixes. This matrix control is used to implement browsers as well. Note that it does not use a delegate or a data source to display or obtain it&rsquo;s data or size. Instead, this is done using accessor methods, making the NSMatrix class more passive in it&rsquo;s representation of data.
+</p>
+<ul class="mini-toc">
+<li><a href="#Creating-Matrix-Controls" accesskey="1">Creating Matrix Controls</a></li>
+<li><a href="#Using-Matrix-controls" accesskey="2">Using Matrix controls</a></li>
+</ul>
+<div class="section-level-extent" id="Creating-Matrix-Controls">
+<h3 class="section"><span>11.1 Creating Matrix Controls<a class="copiable-link" href="#Creating-Matrix-Controls"> &para;</a></span></h3>
+
+<p>A matrix control can be creating by new <code class="code">NSMatrix</code> instance and then calling <code class="code">-initWithFrame:mode:prototype:numberOfRows:numberOfColumns:</code> or <code class="code">-initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:</code>. The former method uses an instance of a cell to instantiate cells for the rows and columns, while the latter uses a cell class to create the cells.
+</p>
+<p>Both these methods require a matrix mode, those of which are specified in <code class="code">NSMatrixMode</code> and control how the matrix &quot;tracks&quot; the mouse:
+</p><dl class="table">
+<dt><code class="code">NSRadioModeMatrix</code></dt>
+<dd><p>Only permits one cell in the matrix to be selected at a time.
+</p>
+</dd>
+<dt><code class="code">NSHighlightModeMatrix</code></dt>
+<dd><p>Performs trackng (as described below) as well as highlighting the cell before tracking commences.
+</p>
+</dd>
+<dt><code class="code">NSListModeMatrix</code></dt>
+<dd><p>Cells objects are highlighted without the opportunity to track the mouse.
+</p>
+</dd>
+<dt><code class="code">NSTrackModeMatrix</code></dt>
+<dd><p>The cell is able to track the mouse while the cursor is within it&rsquo;s bounds. 
+</p>
+</dd>
+</dl>
+
+<p>For more information about cell tracking, See <a class="xref" href="controls.html#Basic-Controls">Basic Controls</a>.
+</p>
+</div>
+<div class="section-level-extent" id="Using-Matrix-controls">
+<h3 class="section"><span>11.2 Using Matrix controls<a class="copiable-link" href="#Using-Matrix-controls"> &para;</a></span></h3>
+
+<p>After having placed one on a window using Gorm, we can change what appears in the matrix by using it&rsquo;s methods.
+</p>
+<a class="index-entry-id" id="index-cell-class_002c-matrix-controls"></a>
+<a class="index-entry-id" id="index-matrix-controls_002c-cell-class"></a>
+<p>The <em class="dfn">cell class</em> is what class is to be used (by default) to create cells. We can use instances of many different cells classes, for example, you may choose to populate your matrix with <code class="code">NSTextCell</code> instances as well as <code class="code">NSButtonCell</code> instances if you were creating an interactive form. You set the default cell class by calling either <code class="code">+setCellClass:</code> on the <code class="code">NSMatrix</code> class to set the cell class over all new <code class="code">NSMatrix</code> instances, or you can call <code class="code">-setCellClass:</code> to set the class used to create new cells on a instance-by-instance basis for each of your matrix instances.
+</p>
+<p>We can retrieve information about the cells in a matrix through a variety of methods. To retrieve the cell at a certain location, use the <code class="code">-cellAtRow:column:</code> method. The size of cells is retrieved using the <code class="code">-cellSize</code> method. To access specific cells, use <code class="code">-cellAtRow:column:</code>, or to access all the cells, simple call <code class="code">-cells</code> to get an array.
+</p>
+<p>We can begin adding rows or columns to the end our matrix using the <code class="code">-addColumn</code> and <code class="code">-addRow</code> methods. To specify the specific cells, use the <code class="code">-addColumnWithCells:</code> and <code class="code">-addRowWithCells:</code> methods, passing an array of the cells for that column/row. Alternatively, rows and columns can be inserted at arbitrary locations using the <code class="code">-insertRow:</code> and <code class="code">-insertColumn:</code> methods, specifying a row or column number. <code class="code">-insertRow:withCells:</code> and <code class="code">-insertColumn:withCells:</code> lets you pass in the cells to be inserted.
+</p>
+<p>Rows and columns can also be removed or replaced. You can remove a column or a row by number using the <code class="code">-removeColumn:</code> or <code class="code">-removeRow:</code> methods respectively. To replace a particular cell, use the <code class="code">-putCell:atRow:column:</code> method.
+</p>
+<p>The cell selection and selection behaviour can be modified. A specific cell can be selected with the <code class="code">-selectCellAtRow:column:</code> by specifying it&rsquo;s location, <code class="code">-selectCellWithTag:</code> by specifying it&rsquo;s tag, or <code class="code">-selectCell:</code> with the cell object. You can also select all the cells with the <code class="code">-selectAll:</code> method.
+</p>
+<p>The selected cell is returned from <code class="code">-selectedCell:</code>, or <code class="code">-selectedCells</code> if more than one cell is selected. <code class="code">-selectedRow</code> and <code class="code">-selectedColumn</code> can be used if an entire row/column is selected.
+</p>
+
+
+</div>
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT14" href="#DOCF14">(14)</a></h5>
+<p>Matrices, as referred to here, are not to be confused with affine transforms, the latter of which is commonly referred to as a matrix, due to it&rsquo;s internal implementation of a mathematical matrix.</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="browsercontrols.html">Browsers</a>, Previous: <a href="outlineviews.html">Outline Views</a>, Up: <a href="index.html">Using the GNUstep AppKit</a> &nbsp; [<a href="conceptindex.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

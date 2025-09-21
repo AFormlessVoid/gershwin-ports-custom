@@ -1,0 +1,519 @@
+{
+    author = {
+	"Niels Grewe" = (
+	    "niels.grewe@halbordnung.de"
+	);
+    };
+    categories = {
+	NSArray = {
+	    DBusKit = DKStruct;
+	};
+    };
+    category = {
+	"NSArray(DBusKit)" = DKStruct;
+    };
+    class = {
+	DKDBus = DKProxy;
+	DKDoubleNumber = DKNumber;
+	DKFloatNumber = DKNumber;
+	DKInt16Number = DKNumber;
+	DKInt32Number = DKNumber;
+	DKInt64Number = DKNumber;
+	DKInt8Number = DKNumber;
+	DKMutableStructArray = DKStruct;
+	DKNotificationCenter = DKNotificationCenter;
+	DKPort = DKPort;
+	DKPortNameServer = DKPortNameServer;
+	DKProxy = DKProxy;
+	DKStructArray = DKStruct;
+	DKUInt16Number = DKNumber;
+	DKUInt32Number = DKNumber;
+	DKUInt64Number = DKNumber;
+	DKUInt8Number = DKNumber;
+	DKVariant = DKVariant;
+    };
+    classvars = {
+	DKDBus = {
+	    isDisconnected = DKProxy;
+	};
+	DKDoubleNumber = {
+	    value = DKNumber;
+	};
+	DKFloatNumber = {
+	    value = DKNumber;
+	};
+	DKInt16Number = {
+	    value = DKNumber;
+	};
+	DKInt32Number = {
+	    value = DKNumber;
+	};
+	DKInt64Number = {
+	    value = DKNumber;
+	};
+	DKInt8Number = {
+	    value = DKNumber;
+	};
+	DKMutableStructArray = {
+	    backingStore = DKStruct;
+	};
+	DKProxy = {
+	    condition = DKProxy;
+	    state = DKProxy;
+	    tableLock = DKProxy;
+	};
+	DKStructArray = {
+	    backingStore = DKStruct;
+	};
+	DKUInt16Number = {
+	    value = DKNumber;
+	};
+	DKUInt32Number = {
+	    value = DKNumber;
+	};
+	DKUInt64Number = {
+	    value = DKNumber;
+	};
+	DKUInt8Number = {
+	    value = DKNumber;
+	};
+	DKVariant = {
+	    object = DKVariant;
+	};
+    };
+    ivariable = {
+	backingStore = {
+	    DKMutableStructArray = DKStruct;
+	    DKStructArray = DKStruct;
+	};
+	condition = {
+	    DKProxy = DKProxy;
+	};
+	isDisconnected = {
+	    DKDBus = DKProxy;
+	};
+	object = {
+	    DKVariant = DKVariant;
+	};
+	state = {
+	    DKProxy = DKProxy;
+	};
+	tableLock = {
+	    DKProxy = DKProxy;
+	};
+	value = {
+	    DKDoubleNumber = DKNumber;
+	    DKFloatNumber = DKNumber;
+	    DKInt16Number = DKNumber;
+	    DKInt32Number = DKNumber;
+	    DKInt64Number = DKNumber;
+	    DKInt8Number = DKNumber;
+	    DKUInt16Number = DKNumber;
+	    DKUInt32Number = DKNumber;
+	    DKUInt64Number = DKNumber;
+	    DKUInt8Number = DKNumber;
+	};
+    };
+    method = {
+	"+busWithBusType:" = {
+	    DKDBus = DKProxy;
+	};
+	"+centerForBusType:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"+enableWorkerThread" = {
+	    DKPort = DKPort;
+	};
+	"+numberWithDouble:" = {
+	    DKDoubleNumber = DKNumber;
+	};
+	"+numberWithFloat:" = {
+	    DKFloatNumber = DKNumber;
+	};
+	"+numberWithInt16:" = {
+	    DKInt16Number = DKNumber;
+	};
+	"+numberWithInt32:" = {
+	    DKInt32Number = DKNumber;
+	};
+	"+numberWithInt64:" = {
+	    DKInt64Number = DKNumber;
+	};
+	"+numberWithInt8:" = {
+	    DKInt8Number = DKNumber;
+	};
+	"+numberWithUInt16:" = {
+	    DKUInt16Number = DKNumber;
+	};
+	"+numberWithUInt32:" = {
+	    DKUInt32Number = DKNumber;
+	};
+	"+numberWithUInt64:" = {
+	    DKUInt64Number = DKNumber;
+	};
+	"+numberWithUInt8:" = {
+	    DKUInt8Number = DKNumber;
+	};
+	"+portForBusType:" = {
+	    DKPort = DKPort;
+	};
+	"+proxyWithPort:path:" = {
+	    DKProxy = DKProxy;
+	};
+	"+proxyWithService:path:bus:" = {
+	    DKProxy = DKProxy;
+	};
+	"+sessionBus" = {
+	    DKDBus = DKProxy;
+	};
+	"+sessionBusCenter" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"+sessionBusPort" = {
+	    DKPort = DKPort;
+	};
+	"+sharedPortNameServerForBusType:" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"+sharedSessionBusPortNameServer" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"+sharedSystemBusPortNameServer" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"+systemBus" = {
+	    DKDBus = DKProxy;
+	};
+	"+systemBusCenter" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"+systemBusPort" = {
+	    DKPort = DKPort;
+	};
+	"+variantWithObject:" = {
+	    DKVariant = DKVariant;
+	};
+	"-addObserver:selector:name:object:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-addObserver:selector:name:sender:destination:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-addObserver:selector:signal:interface:sender:destination:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-addObserver:selector:signal:interface:sender:destination:filter:atIndex:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-addObserver:selector:signal:interface:sender:destination:filters:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-addObserver:selector:signal:interface:sender:destination:filtersAndIndices:,..." = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-hasSameScopeAs:" = {
+	    DKProxy = DKProxy;
+	};
+	"-initWithDouble:" = {
+	    DKDoubleNumber = DKNumber;
+	};
+	"-initWithEndpoint:andService:andPath:" = {
+	    DKProxy = DKProxy;
+	};
+	"-initWithFloat:" = {
+	    DKFloatNumber = DKNumber;
+	};
+	"-initWithInt16:" = {
+	    DKInt16Number = DKNumber;
+	};
+	"-initWithInt32:" = {
+	    DKInt32Number = DKNumber;
+	};
+	"-initWithInt64:" = {
+	    DKInt64Number = DKNumber;
+	};
+	"-initWithInt8:" = {
+	    DKInt8Number = DKNumber;
+	};
+	"-initWithObject:" = {
+	    DKVariant = DKVariant;
+	};
+	"-initWithPort:path:" = {
+	    DKProxy = DKProxy;
+	};
+	"-initWithRemote:" = {
+	    DKPort = DKPort;
+	};
+	"-initWithRemote:onBus:" = {
+	    DKPort = DKPort;
+	};
+	"-initWithService:path:bus:" = {
+	    DKProxy = DKProxy;
+	};
+	"-initWithUInt16:" = {
+	    DKUInt16Number = DKNumber;
+	};
+	"-initWithUInt32:" = {
+	    DKUInt32Number = DKNumber;
+	};
+	"-initWithUInt64:" = {
+	    DKUInt64Number = DKNumber;
+	};
+	"-initWithUInt8:" = {
+	    DKUInt8Number = DKNumber;
+	};
+	"-isDBusStruct" = {
+	    "(DKStruct)" = DKStruct;
+	};
+	"-isDBusVariant" = {
+	    "(DKVariant)" = DKVariant;
+	};
+	"-portForName:" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"-postNotification:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-postNotificationName:object:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-postNotificationName:object:userInfo:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-postSignalName:interface:object:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-postSignalName:interface:object:userInfo:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-registerNotificationName:asSignal:inInterface:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-registerPort:name:" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"-registerPort:name:flags:" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"-removeObserver:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:name:object:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:name:sender:destination:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:signal:interface:object:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:signal:interface:sender:destination:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:signal:interface:sender:destination:filter:atIndex:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:signal:interface:sender:destination:filters:" = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removeObserver:signal:interface:sender:destination:filtersAndIndices:,..." = {
+	    DKNotificationCenter = DKNotificationCenter;
+	};
+	"-removePortForName:" = {
+	    DKPortNameServer = DKPortNameServer;
+	};
+	"-setPrimaryDBusInterface:" = {
+	    DKProxy = DKProxy;
+	};
+    };
+    output = {
+	"../Headers/../Headers/DKNotificationCenter.h" = (
+	    "Reference/DKNotificationCenter.gsdoc"
+	);
+	"../Headers/../Headers/DKNumber.h" = (
+	    "Reference/DKNumber.gsdoc"
+	);
+	"../Headers/../Headers/DKPort.h" = (
+	    "Reference/DKPort.gsdoc"
+	);
+	"../Headers/../Headers/DKPortNameServer.h" = (
+	    "Reference/DKPortNameServer.gsdoc"
+	);
+	"../Headers/../Headers/DKProxy.h" = (
+	    "Reference/DKProxy.gsdoc",
+	    "Reference/TypesAndConstants.gsdoc"
+	);
+	"../Headers/../Headers/DKStruct.h" = (
+	    "Reference/DKStruct.gsdoc"
+	);
+	"../Headers/../Headers/DKVariant.h" = (
+	    "Reference/DKVariant.gsdoc"
+	);
+    };
+    protocol = {
+	"(DKStruct)" = DKStruct;
+	"(DKVariant)" = DKVariant;
+    };
+    source = {
+	"../Headers/../Headers/DKNotificationCenter.h" = (
+	    "../Headers/../Headers/DKNotificationCenter.h"
+	);
+	"../Headers/../Headers/DKNumber.h" = (
+	    "../Headers/../Headers/DKNumber.h"
+	);
+	"../Headers/../Headers/DKPort.h" = (
+	    "../Headers/../Headers/DKPort.h"
+	);
+	"../Headers/../Headers/DKPortNameServer.h" = (
+	    "../Headers/../Headers/DKPortNameServer.h"
+	);
+	"../Headers/../Headers/DKProxy.h" = (
+	    "../Headers/../Headers/DKProxy.h"
+	);
+	"../Headers/../Headers/DKStruct.h" = (
+	    "../Headers/../Headers/DKStruct.h"
+	);
+	"../Headers/../Headers/DKVariant.h" = (
+	    "../Headers/../Headers/DKVariant.h"
+	);
+    };
+    super = {
+	DKDBus = DKProxy;
+	DKDoubleNumber = NSNumber;
+	DKFloatNumber = NSNumber;
+	DKInt16Number = NSNumber;
+	DKInt32Number = NSNumber;
+	DKInt64Number = NSNumber;
+	DKInt8Number = NSNumber;
+	DKMutableStructArray = NSMutableArray;
+	DKNotificationCenter = NSObject;
+	DKPort = NSPort;
+	DKPortNameServer = NSObject;
+	DKProxy = NSProxy;
+	DKStructArray = NSArray;
+	DKUInt16Number = NSNumber;
+	DKUInt32Number = NSNumber;
+	DKUInt64Number = NSNumber;
+	DKUInt8Number = NSNumber;
+	DKVariant = NSProxy;
+    };
+    title = {
+	DBusKit = "Reference Documentation for the DBusKit Framework";
+	DKNotificationCenter = "DKNotificationCenter class documentation";
+	DKNumber = "DKNumber documentation";
+	DKPort = "DKPort class documentation";
+	DKPortNameServer = "DKPortNameServer class documentation";
+	DKProxy = "DKProxy documentation";
+	DKStruct = "DKStruct documentation";
+	DKVariant = "DKVariant class documentation";
+	TypesAndConstants = Typedefs;
+    };
+    unitmethods = {
+	"(DKStruct)" = {
+	    "-isDBusStruct" = DKStruct;
+	};
+	"(DKVariant)" = {
+	    "-isDBusVariant" = DKVariant;
+	};
+	DKDBus = {
+	    "+busWithBusType:" = DKProxy;
+	    "+sessionBus" = DKProxy;
+	    "+systemBus" = DKProxy;
+	};
+	DKDoubleNumber = {
+	    "+numberWithDouble:" = DKNumber;
+	    "-initWithDouble:" = DKNumber;
+	};
+	DKFloatNumber = {
+	    "+numberWithFloat:" = DKNumber;
+	    "-initWithFloat:" = DKNumber;
+	};
+	DKInt16Number = {
+	    "+numberWithInt16:" = DKNumber;
+	    "-initWithInt16:" = DKNumber;
+	};
+	DKInt32Number = {
+	    "+numberWithInt32:" = DKNumber;
+	    "-initWithInt32:" = DKNumber;
+	};
+	DKInt64Number = {
+	    "+numberWithInt64:" = DKNumber;
+	    "-initWithInt64:" = DKNumber;
+	};
+	DKInt8Number = {
+	    "+numberWithInt8:" = DKNumber;
+	    "-initWithInt8:" = DKNumber;
+	};
+	DKNotificationCenter = {
+	    "+centerForBusType:" = DKNotificationCenter;
+	    "+sessionBusCenter" = DKNotificationCenter;
+	    "+systemBusCenter" = DKNotificationCenter;
+	    "-addObserver:selector:name:object:" = DKNotificationCenter;
+	    "-addObserver:selector:name:sender:destination:" = DKNotificationCenter;
+	    "-addObserver:selector:signal:interface:sender:destination:" = DKNotificationCenter;
+	    "-addObserver:selector:signal:interface:sender:destination:filter:atIndex:" = DKNotificationCenter;
+	    "-addObserver:selector:signal:interface:sender:destination:filters:" = DKNotificationCenter;
+	    "-addObserver:selector:signal:interface:sender:destination:filtersAndIndices:,..." = DKNotificationCenter;
+	    "-postNotification:" = DKNotificationCenter;
+	    "-postNotificationName:object:" = DKNotificationCenter;
+	    "-postNotificationName:object:userInfo:" = DKNotificationCenter;
+	    "-postSignalName:interface:object:" = DKNotificationCenter;
+	    "-postSignalName:interface:object:userInfo:" = DKNotificationCenter;
+	    "-registerNotificationName:asSignal:inInterface:" = DKNotificationCenter;
+	    "-removeObserver:" = DKNotificationCenter;
+	    "-removeObserver:name:object:" = DKNotificationCenter;
+	    "-removeObserver:name:sender:destination:" = DKNotificationCenter;
+	    "-removeObserver:signal:interface:object:" = DKNotificationCenter;
+	    "-removeObserver:signal:interface:sender:destination:" = DKNotificationCenter;
+	    "-removeObserver:signal:interface:sender:destination:filter:atIndex:" = DKNotificationCenter;
+	    "-removeObserver:signal:interface:sender:destination:filters:" = DKNotificationCenter;
+	    "-removeObserver:signal:interface:sender:destination:filtersAndIndices:,..." = DKNotificationCenter;
+	};
+	DKPort = {
+	    "+enableWorkerThread" = DKPort;
+	    "+portForBusType:" = DKPort;
+	    "+sessionBusPort" = DKPort;
+	    "+systemBusPort" = DKPort;
+	    "-initWithRemote:" = DKPort;
+	    "-initWithRemote:onBus:" = DKPort;
+	};
+	DKPortNameServer = {
+	    "+sharedPortNameServerForBusType:" = DKPortNameServer;
+	    "+sharedSessionBusPortNameServer" = DKPortNameServer;
+	    "+sharedSystemBusPortNameServer" = DKPortNameServer;
+	    "-portForName:" = DKPortNameServer;
+	    "-registerPort:name:" = DKPortNameServer;
+	    "-registerPort:name:flags:" = DKPortNameServer;
+	    "-removePortForName:" = DKPortNameServer;
+	};
+	DKProxy = {
+	    "+proxyWithPort:path:" = DKProxy;
+	    "+proxyWithService:path:bus:" = DKProxy;
+	    "-hasSameScopeAs:" = DKProxy;
+	    "-initWithEndpoint:andService:andPath:" = DKProxy;
+	    "-initWithPort:path:" = DKProxy;
+	    "-initWithService:path:bus:" = DKProxy;
+	    "-setPrimaryDBusInterface:" = DKProxy;
+	};
+	DKUInt16Number = {
+	    "+numberWithUInt16:" = DKNumber;
+	    "-initWithUInt16:" = DKNumber;
+	};
+	DKUInt32Number = {
+	    "+numberWithUInt32:" = DKNumber;
+	    "-initWithUInt32:" = DKNumber;
+	};
+	DKUInt64Number = {
+	    "+numberWithUInt64:" = DKNumber;
+	    "-initWithUInt64:" = DKNumber;
+	};
+	DKUInt8Number = {
+	    "+numberWithUInt8:" = DKNumber;
+	    "-initWithUInt8:" = DKNumber;
+	};
+	DKVariant = {
+	    "+variantWithObject:" = DKVariant;
+	    "-initWithObject:" = DKVariant;
+	};
+    };
+}

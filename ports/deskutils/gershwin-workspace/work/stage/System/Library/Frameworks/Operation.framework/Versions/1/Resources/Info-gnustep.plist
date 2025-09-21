@@ -1,0 +1,17 @@
+{
+    ApplicationDescription = Operation;
+    ApplicationIcon = "Operation.tiff";
+    ApplicationName = Operation;
+    ApplicationRelease = "1.1.0";
+    Classes = (
+	Operation,
+	FileOpExecutor,
+	FileOpInfo
+    );
+    NOTE = "Automatically generated, do not edit!";
+    NSExecutable = Operation;
+    NSIcon = "Operation.tiff";
+    NSMainNibFile = "";
+    NSPrincipalClass = Operation;
+    NSRole = NSNone;
+}

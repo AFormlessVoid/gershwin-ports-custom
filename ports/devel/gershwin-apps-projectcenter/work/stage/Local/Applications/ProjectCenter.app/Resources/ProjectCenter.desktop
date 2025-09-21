@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Categories=X-GNUstep;
+Name=ProjectCenter
+StartupWMClass=ProjectCenter
+Comment=GNUstep Integrated Development Environment
+Icon=/Local/Applications/ProjectCenter.app/Resources/ProjectCenter.tiff
+Exec=//System/Library//Tools/openapp ProjectCenter
+MimeType=

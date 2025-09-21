@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Introduction (GNUstep D-Bus Programming Manual)</title>
+
+<meta name="description" content="Introduction (GNUstep D-Bus Programming Manual)">
+<meta name="keywords" content="Introduction (GNUstep D-Bus Programming Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="#Introduction" rel="start" title="Introduction">
+<link href="GNU-Free-Documentation-License.html" rel="index" title="GNU Free Documentation License">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Using-D_002dBus-From-Objective_002dC.html" rel="next" title="Using D-Bus From Objective-C">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+ 
+
+
+
+
+
+<div class="chapter-level-extent" id="Introduction">
+<div class="nav-panel">
+<p>
+Next: <a href="Using-D_002dBus-From-Objective_002dC.html" accesskey="n" rel="next">Using D-Bus From Objective-C</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="GNU-Free-Documentation-License.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Introduction-1"><span>1 Introduction<a class="copiable-link" href="#Introduction-1"> &para;</a></span></h2>
+
+<p>The aim of this manual is to familiarise the reader with the concepts
+and tools necessary to successfully integrate a GNUstep application into
+a desktop environment based around message exchange through the D-Bus
+messaging bus facilities. The manual tries to give succinct explanation
+of the concepts involved, providing illustrative examples whenever
+possible.
+</p>
+<p>It will be most useful to a reader who has basic working
+knowledge of the Objective-C programming language and the OpenStep APIs
+(either from the GNUstep implementation or from Apple&rsquo;s Cocoa). In depth
+knowledge of the Distributed Objects system or D-Bus is also beneficial
+but not required.
+</p>
+<ul class="mini-toc">
+<li><a href="#An-IPC-primer" accesskey="1">An IPC primer</a></li>
+<li><a href="#Distributed-Objects" accesskey="2">Distributed Objects</a></li>
+<li><a href="#D_002dBus" accesskey="3">D-Bus</a></li>
+<li><a href="#Comparison" accesskey="4">Comparison</a></li>
+</ul>
+<div class="section-level-extent" id="An-IPC-primer">
+<h3 class="section"><span>1.1 An IPC primer<a class="copiable-link" href="#An-IPC-primer"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-IPC"></a>
+<a class="index-entry-id" id="index-inter_002dprocess-communication"></a>
+<p>A typical modern computer system executes multiple units of computation
+at the same time. Even with a single-core CPU, the operating system will
+constantly switch between different units of computation by employing
+different multitasking strategies. This approach has a number of
+advantages, e.g.:
+</p><ul class="itemize mark-bullet">
+<li>It facilitates isolation of processes from one another: A
+malignant process cannot easily modify the memory of other processes on
+the system.
+</li><li>It allows privilege separation: It is not necessary that a
+web-browser has the same rights as a partitioning utility. Running both
+in different processes allows the operating system to assign different
+privileges to both.
+</li><li>It increases modularity: You can easily change one part of the
+software on your computer without disturbing the other parts.
+</li><li>If the computer has more than one CPU, computation can be sped up
+by running more than one process (or thread) in parallel.
+</li></ul>
+<p>To leverage these advantages effectively, different processes or
+applications need a mechanism for inter-process communication (IPC) that
+allows them to exchange information (and ensure synchronisation if
+needed). 
+</p>
+<a class="index-entry-id" id="index-message-passing"></a>
+<p>One way to implement an IPC mechanism is by using the message passing
+paradigm. Entities in a message passing system communicate by exchanging
+messages with each other, which makes it a natural fit for object
+oriented languages, where the basic abstraction is the object.
+</p>
+<p>The message passing paradigm is also used in Objective-C (actually
+Objective-C inherited it from Smalltalk), where you interact with
+objects by sending messages to them. E.g. the intended meaning of
+</p><div class="example">
+<pre class="example-preformatted">[alice greet];
+</pre></div>
+<p>would be sending the <code class="code">-greet</code> message to the <code class="code">alice</code> object,
+which is referred to as the <em class="emph">receiver</em> of the message. This idiom
+can be quite easily extended beyond the single process case, which the
+NeXT did by including the <em class="emph">Distributed Objects</em> system in the
+OpenStep specification that GNUstep implements. The message passing
+paradigm is also employed by D-Bus, and we will look at the similarities
+and differences of both systems in the following sections.
+</p>
+</div>
+<div class="section-level-extent" id="Distributed-Objects">
+<h3 class="section"><span>1.2 Distributed Objects<a class="copiable-link" href="#Distributed-Objects"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Distributed-Objects"></a>
+<a class="index-entry-id" id="index-DO"></a>
+
+<p>The GNUstep Distributed Objects (DO) System is designed to go out of a
+programmer&rsquo;s way. Since ordinary (intra-process) usage Objective-C
+already has message passing semantics, Distributed Objects simply
+extends these semantics to objects in other processes.
+</p>
+<p>This works by usage of the proxy design pattern. A proxy is a stand-in
+object that receives messages <em class="emph">in lieu</em> of another object and
+forwards them (most likely after processing them as it sees fit). In the
+case of Distributed Objects, the proxy will take the message that is
+being sent to the remote object, encode it a <code class="code">NSInvocation</code>
+object and send a serialised version of the invocation to the remote
+process where it is invoked on the receiver it was initially intended
+for. 
+</p>
+<p>Establishing a connection to a remote object using DO is thus a simple
+three step process:
+</p><ol class="enumerate">
+<li> Look up a process that exposes (&rsquo;vends&rsquo;, in DO parlance) an object.
+</li><li> Establish a communication channel to the process.
+</li><li> Create a proxy object to send messages to the remote object.
+</li></ol>
+<p>Afterwards, the generated proxy can be used just like any in-process
+object.
+</p>
+<p>Task 1. involves the <code class="code">NSPortNameServer</code> class which can be used to
+obtain a communication endpoint (<code class="code">NSPort</code>) to a service with a
+specific name: 
+</p><div class="example">
+<pre class="example-preformatted">NSPort *sendPort = [[NSPortNameServer systemDefaultPortNameServer]
+  portForName: @&quot;MyService&quot;];
+</pre></div>
+<p>Task 2. involves <code class="code">NSPort</code> and <code class="code">NSConnection</code>. While the former
+is concerned with the low-level details of encoding messages to a wire
+format, the latter manages sending messages over ports. A connection to
+the above <code class="code">MyService</code> using the created <code class="code">sendPort</code> could be
+obtained like this:
+</p><div class="example">
+<pre class="example-preformatted">NSConnection *c = [NSConnection connectionWithReceivePort: [NSPort port]
+                                                 sendPort: sendPort];
+</pre></div>
+
+<p>Task 3. is done by calling <code class="code">-rootProxy</code> on the <code class="code">NSConnection</code>
+object. This will return an instance of <code class="code">NSDistantObject</code>: A proxy
+that will use <code class="code">NSConnection</code> and <code class="code">NSPort</code> to forward messages
+to the remote object.
+</p><div class="example">
+<pre class="example-preformatted">id remoteObject = [c rootProxy];
+</pre></div>
+
+<p>The DO mode of operation has a few notable advantages:
+</p><ul class="itemize mark-bullet">
+<li>Usual message passing semantics apply.
+</li><li>The native Objective-C type system is used in both processes. No
+type conversion is necessary.
+</li><li>New objects can be vended implicitly by returning them from the
+root proxy. New proxies will be created automatically for them.
+</li><li>DO can make intelligent decisions about the remote objects: If
+process <em class="emph">A</em> has vended object <em class="emph">O</em> to process <em class="emph">B</em>
+(yielding the proxy <em class="emph">P(O)</em>), and <em class="emph">B</em>  latter vends
+<em class="emph">P(O)</em> to <em class="emph">A</em>, <em class="emph">A</em> will not use <em class="emph">P(P(O))</em>, but its
+local reference to <em class="emph">O</em>.
+</li></ul>
+<p>It goes without saying that DO is pretty useful and GNUstep uses it in
+many places. It drives, for example, the services architecture, the pasteboard
+server, or the distributed notification system. For further information
+about DO, please consult the
+<a class="uref" href="../../Base/ProgrammingManual/manual_7.html">Objective-C GNUstep
+Base Programming Manual</a>. We will now turn our attention to the D-Bus
+IPC system.
+</p>
+</div>
+<div class="section-level-extent" id="D_002dBus">
+<h3 class="section"><span>1.3 D-Bus<a class="copiable-link" href="#D_002dBus"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-D_002dBus"></a>
+
+<p>Distributed Objects has already been part of NeXT&rsquo;s OpenStep
+Specification, which appeared in 1994 and thus predates the D-Bus IPC
+system for quite some time.  But while DO is only useful in an
+Objective-C context, D-Bus was created to suit the needs of desktop
+environments such as KDE or GNOME, which use (among others) C or
+C++ as their core programming languages. 
+</p><ul class="mini-toc">
+<li><a href="#Message-Busses" accesskey="1">Message Busses</a></li>
+<li><a href="#Services" accesskey="2">Services</a></li>
+<li><a href="#Object-Paths" accesskey="3">Object Paths</a></li>
+<li><a href="#Interfaces" accesskey="4">Interfaces</a></li>
+<li><a href="#Type-System" accesskey="5">Type System</a></li>
+</ul>
+<div class="subsection-level-extent" id="Message-Busses">
+<h4 class="subsection"><span>1.3.1 Message Busses<a class="copiable-link" href="#Message-Busses"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-message-bus"></a>
+<p>One core concept of D-Bus is that of the message bus. A standard desktop
+system that uses D-Bus usually has two active message buses, dubbed the
+<em class="emph">well-known buses</em>. One is the <em class="emph">system bus</em>, to which
+system-wide services connect, the other is the <em class="emph">session bus</em> which
+is started per user session and allows applications on the user&rsquo;s
+desktop to communicate. 
+</p>
+<p>The purpose of a bus, which is running as a separate process (the
+<em class="emph">dbus-daemon</em>), is to provide name-services to the connected
+applications and route messages between them.
+</p></div>
+<div class="subsection-level-extent" id="Services">
+<h4 class="subsection"><span>1.3.2 Services<a class="copiable-link" href="#Services"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-service_002c-D_002dBus"></a>
+<a class="index-entry-id" id="index-D_002dBus-service"></a>
+<p>A process that connects to a message bus is considered to be a
+<em class="emph">service</em>, even if it will not expose any object to the bus. A
+unique name, which starts with a colon (e.g. <em class="emph">:1.1</em>) and is
+required for message routing, will be assigned to every service by the
+bus. The service can also request further names from the bus. A text
+editor might, for example, want to request the name
+<em class="emph">org.gnustep.TextEditor</em> from the bus. These names are referred to
+as <em class="emph">well-known names</em> and usually utilise reverse-DNS notation.
+</p>
+<p>These names can be subject to different assignment policies. A service
+can specify that it wants to be queued for a name that has already be
+assigned. It will then become the owner of the name when the last
+previous owner exits or releases the name. Alternatively, the service
+can request to replace an existing name, a feature that can be used to
+ensure that only one application of a specific type is running (as would
+be the case for, e.g., a screensaver).
+</p></div>
+<div class="subsection-level-extent" id="Object-Paths">
+<h4 class="subsection"><span>1.3.3 Object Paths<a class="copiable-link" href="#Object-Paths"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-object-path_002c-D_002dBus"></a>
+<a class="index-entry-id" id="index-D_002dBus-object-path"></a>
+
+<p>When using DO, the object graph vended by a service is generated
+implicitly: If a message send to a remote object returns another object,
+that object will implicitly be vended and wrapped in a proxy for use by
+the other process. D-Bus operates quite differently in that respect:
+Every object needs to be assigned a name that can be used by remote
+processes to interact with the object. These object names are organised
+in the directory-like structure, where each object is uniquely
+identified by its <em class="emph">object path</em>. The UDisks service
+(<em class="emph">org.freedesktop.UDisks</em>) on the system bus does, for example,
+expose different disks of a computer at different paths:
+</p><div class="example">
+<pre class="example-preformatted">/org/freedesktop/UDisks/devices/sda
+/org/freedesktop/UDisks/devices/sdb
+</pre></div>
+<p>It is worth noting that it is a D-Bus convention to have the root object
+of the service not reside at the root path (&ldquo;/&rdquo;) but at one that
+corresponds to the service name with all dots replaced by the path
+separator. Thus you do not access the root object of
+<em class="emph">org.freedesktop.UDisks</em> at &ldquo;/&rdquo; but at &ldquo;/org/freedesktop/UDisks&rdquo;.
+The reason for this is to ensure proper name-spacing if different code
+modules in a single process have registered multiple names on the bus
+(which will all point to the same unique name).
+</p></div>
+<div class="subsection-level-extent" id="Interfaces">
+<h4 class="subsection"><span>1.3.4 Interfaces<a class="copiable-link" href="#Interfaces"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-interface_002c-D_002dBus"></a>
+<a class="index-entry-id" id="index-D_002dBus-interface"></a>
+<p>D-Bus object-path nodes are the receivers and senders of D-Bus messages.
+They receive calls to methods and emit signals, which are broadcast by
+the bus and can be watched for by other applications. These methods and
+signals can be aggregated into <em class="emph">interfaces</em>, which are a bit, but
+not quite, like Objective-C protocols. One interface that almost every
+D-Bus object implements is <em class="emph">org.freedesktop.Introspectable</em>, which
+has as its sole member the <code class="code">Introspect()</code>-method. This will return
+XML-encoded information about all methods, signals, and properties the
+object exposes. 
+</p>
+<p>Interfaces are also used as namespaces for their members: Identically
+named methods with different implementations are allowed to appear in
+multiple interfaces, something that is not possible with Objective-C
+protocols.
+</p>
+</div>
+<div class="subsection-level-extent" id="Type-System">
+<h4 class="subsection"><span>1.3.5 Type System<a class="copiable-link" href="#Type-System"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-type-system_002c-D_002dBus"></a>
+<a class="index-entry-id" id="index-D_002dBus-type-system"></a>
+<p>For arguments and values of methods, signals, and properties, D-Bus
+defines its own type system, which is similar to the C type system. It
+contains integer and floating point types of different sizes as well as
+array and structure types. The type system represents dictionaries as
+arrays of ordered pairs. Additionally, there is a type available for
+references to objects (but these references are only valid within a
+single service) and a variant type that, just like Objective-C&rsquo;s
+<code class="code">id</code>, allows for values of arbitrary types. This type system has to
+be adopted by any application that wants to interface with D-Bus.
+</p>
+</div>
+</div>
+<div class="section-level-extent" id="Comparison">
+<h3 class="section"><span>1.4 Comparison<a class="copiable-link" href="#Comparison"> &para;</a></span></h3>
+
+<table class="multitable">
+<thead><tr><th width="22%">Feature</th><th width="39%">Distributed Objects</th><th width="39%">D-Bus</th></tr></thead>
+<tbody><tr><td width="22%">IPC paradigm</td><td width="39%">message passing</td><td width="39%">message passing</td></tr>
+<tr><td width="22%">type system</td><td width="39%">native Objective-C type system</td><td width="39%">custom D-Bus
+type system (C-like)</td></tr>
+<tr><td width="22%">supported programming languages</td><td width="39%">Objective-C<a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a></td><td width="39%">many languages through bindings</td></tr>
+<tr><td width="22%">polymorphism</td><td width="39%">no special provisions</td><td width="39%">through overloaded method names in
+different interfaces</td></tr>
+<tr><td width="22%">object-graph generation</td><td width="39%">implicit</td><td width="39%">explicit with named
+objects</td></tr>
+<tr><td width="22%">name service</td><td width="39%">provided by separate nameserver objects</td><td width="39%">integrated</td></tr>
+<tr><td width="22%">delivery of broadcast information</td><td width="39%">distributed notification
+system implemented on top of DO</td><td width="39%">integrated as D-Bus signals</td></tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<p>Please
+note that the GNUstep and Apple implementations of Distributed Objects
+are incompatible.</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Using-D_002dBus-From-Objective_002dC.html" accesskey="n" rel="next">Using D-Bus From Objective-C</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="GNU-Free-Documentation-License.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

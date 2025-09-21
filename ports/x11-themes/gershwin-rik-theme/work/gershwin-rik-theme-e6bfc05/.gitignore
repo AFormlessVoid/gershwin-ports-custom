@@ -1,0 +1,11 @@
+obj/
+Rik.theme/
+.AppleDouble
+.gwdir
+*.swp
+.vimrc
+tags
+*.core
+*Test*
+*_test.*
+*.test

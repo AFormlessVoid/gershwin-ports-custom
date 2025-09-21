@@ -1,0 +1,18 @@
+/usr/local/share/licenses/gershwin-gbi-wrapper-20250710/catalog.mk
+/usr/local/share/licenses/gershwin-gbi-wrapper-20250710/LICENSE
+/usr/local/share/licenses/gershwin-gbi-wrapper-20250710/GPLv2+
+/System/Applications/Installer.app/Installer
+/System/Applications/Installer.app/Resources/Info-gnustep.plist
+/System/Applications/Installer.app/Resources/Installer.desktop
+/System/Applications/Installer.app/Resources/Installer.png
+/System/Applications/Installer.app/stamp.make
+/System/Library/Tools/Installer
+@dir /System/Applications/Installer.app/Resources
+@dir /System/Applications/Installer.app
+@dir /System/Applications
+@dir /System/Library/Tools
+@dir /System/Library
+@dir /System
+@owner
+@group
+@mode

@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+<!DOCTYPE gsdoc PUBLIC "-//GNUstep//DTD gsdoc 1.0.4//EN" "http://www.gnustep.org/gsdoc-1_0_4.dtd">
+<gsdoc base="NSAlert" stylesheeturl="default-styles.css" up="Gui">
+  <head>
+    <title>NSAlert</title>
+    <author name="Fred Kiefer">
+      <email address="FredKiefer@gmx.de">
+        FredKiefer@gmx.de
+      </email>
+    </author>
+    <author name="Richard Frith-Macdonald">
+      <email address="richard@brainstorm.co.uk">
+        richard@brainstorm.co.uk
+      </email>
+    </author>
+    <author name="Pascal J. Bourguignon">
+      <email address="pjb@imaginet.fr">
+        pjb@imaginet.fr
+      </email>
+    </author>
+    <date>Generated at 2025-09-16 12:12:19 -0500</date>
+    <abstract>Encapsulate an alert panel</abstract>
+    <copy>
+      (C) 1998, 2000, 2004 Free Software Foundation, Inc.
+    </copy>
+  </head>
+  <body>
+    <front><contents /></front>
+    <chapter>
+      <heading>
+        Software documentation for the NSAlert class
+      </heading>
+      <class name="NSAlert" super="NSObject" ovadd="10.3.0">
+        <declared>AppKit/NSAlert.h</declared>
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+        <method type="NSAlert*" factory="yes" ovadd="10.4.0">
+          <sel>alertWithError:</sel>
+          <arg type="NSError*">error</arg>
+          <desc>
+            Creates and returns an alert initialized with the
+            given error's description.
+          </desc>
+        </method>
+        <method type="NSAlert*" factory="yes" ovadd="10.3.0">
+          <sel>alertWithMessageText:</sel>
+          <arg type="NSString*">messageTitle</arg>
+          <sel>defaultButton:</sel>
+          <arg type="NSString*">defaultButtonTitle</arg>
+          <sel>alternateButton:</sel>
+          <arg type="NSString*">alternateButtonTitle</arg>
+          <sel>otherButton:</sel>
+          <arg type="NSString*">otherButtonTitle</arg>
+          <sel>informativeTextWithFormat:</sel>
+          <arg type="NSString*">format</arg>
+          <vararg />
+          <desc>
+            Creates and returns a fully initialized alert with
+            a title, button labels, and informative text formatted
+            with optional arguments.
+          </desc>
+        </method>
+        <method type="NSButton*" ovadd="10.3.0">
+          <sel>addButtonWithTitle:</sel>
+          <arg type="NSString*">aTitle</arg>
+          <desc>
+            Adds a button with the specified title to the alert.
+          </desc>
+        </method>
+        <method type="NSAlertStyle" ovadd="10.3.0">
+          <sel>alertStyle</sel>
+          <desc>
+            Returns the alert style.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.9.0">
+          <sel>beginSheetModalForWindow:</sel>
+          <arg type="NSWindow*">sheetWindow</arg>
+          <sel>completionHandler:</sel>
+          <arg type="GSNSWindowDidEndSheetCallbackBlock">handler</arg>
+          <desc>
+            Presents the alert as a sheet using a completion
+            <var>handler</var>.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>beginSheetModalForWindow:</sel>
+          <arg type="NSWindow*">window</arg>
+          <sel>modalDelegate:</sel>
+          <arg type="id">delegate</arg>
+          <sel>didEndSelector:</sel>
+          <arg type="SEL">didEndSelector</arg>
+          <sel>contextInfo:</sel>
+          <arg type="void*">contextInfo</arg>
+          <desc>
+            Presents the alert as a sheet for the specified
+            <var>window</var>. Calls the delegate's selector when
+            the alert is dismissed.
+          </desc>
+        </method>
+        <method type="NSArray*" ovadd="10.3.0">
+          <sel>buttons</sel>
+          <desc>
+            Returns the array of buttons currently displayed in
+            the alert.
+          </desc>
+        </method>
+        <method type="id" ovadd="10.3.0">
+          <sel>delegate</sel>
+          <desc>
+            Returns the delegate for the alert.
+          </desc>
+        </method>
+        <method type="NSString*" ovadd="10.3.0">
+          <sel>helpAnchor</sel>
+          <desc>
+            Returns the help anchor identifier.
+          </desc>
+        </method>
+        <method type="NSImage*" ovadd="10.3.0">
+          <sel>icon</sel>
+          <desc>
+            Returns the icon associated with the alert.
+          </desc>
+        </method>
+        <method type="NSString*" ovadd="10.3.0">
+          <sel>informativeText</sel>
+          <desc>
+            Returns the informative text displayed in the
+            alert.
+          </desc>
+        </method>
+        <method type="NSString*" ovadd="10.3.0">
+          <sel>messageText</sel>
+          <desc>
+            Returns the primary message text displayed in the
+            alert.
+          </desc>
+        </method>
+        <method type="NSInteger" ovadd="10.3.0">
+          <sel>runModal</sel>
+          <desc>
+            Runs the alert as an application-modal dialog. Returns
+            the response code.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setAlertStyle:</sel>
+          <arg type="NSAlertStyle">style</arg>
+          <desc>
+            Sets the alert <var>style</var>.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setDelegate:</sel>
+          <arg type="id">delegate</arg>
+          <desc>
+            Sets the <var>delegate</var> that handles alert
+            behavior.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setHelpAnchor:</sel>
+          <arg type="NSString*">anchor</arg>
+          <desc>
+            Sets the help <var>anchor</var> used to link help
+            information.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setIcon:</sel>
+          <arg type="NSImage*">icon</arg>
+          <desc>
+            Sets the <var>icon</var> displayed in the alert.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setInformativeText:</sel>
+          <arg type="NSString*">informativeText</arg>
+          <desc>
+            Sets the informative text for the alert.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setMessageText:</sel>
+          <arg type="NSString*">messageText</arg>
+          <desc>
+            Sets the message text for the alert.
+          </desc>
+        </method>
+        <method type="void" ovadd="10.3.0">
+          <sel>setShowsHelp:</sel>
+          <arg type="BOOL">showsHelp</arg>
+          <desc>
+            Sets whether the alert displays a Help button.
+          </desc>
+        </method>
+        <method type="BOOL" ovadd="10.3.0">
+          <sel>showsHelp</sel>
+          <desc>
+            Returns whether the alert displays a Help button.
+          </desc>
+        </method>
+        <method type="id" ovadd="10.3.0">
+          <sel>window</sel>
+          <desc>
+            Returns the internal window used by the alert.
+          </desc>
+        </method>
+      </class>
+    </chapter>
+    <chapter>
+      <heading>
+        Software documentation for the
+        NSObject(NSAlertDelegate) informal
+        protocol
+      </heading>
+      <category name="NSAlertDelegate" class="NSObject" ovadd="10.0.0">
+        <declared>AppKit/NSAlert.h</declared>
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+        <method type="BOOL" ovadd="10.0.0">
+          <sel>alertShowHelp:</sel>
+          <arg type="NSAlert*">alert</arg>
+          <desc>
+            Called when the user clicks the Help button. Return
+            <code>YES</code> to indicate the help was shown.
+          </desc>
+        </method>
+      </category>
+    </chapter>
+    <chapter>
+      <heading>
+        Software documentation for the NSAlertDelegate
+        protocol
+      </heading>
+      <protocol name="NSAlertDelegate" ovadd="10.0.0">
+        <declared>AppKit/NSAlert.h</declared>
+        <conform>NSObject</conform>
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+      </protocol>
+    </chapter>
+  </body>
+</gsdoc>

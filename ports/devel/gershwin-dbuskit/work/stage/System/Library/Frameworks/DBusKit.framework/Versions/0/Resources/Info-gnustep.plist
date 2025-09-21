@@ -1,0 +1,9 @@
+{
+  NOTE = "Automatically generated, do not edit!";
+  NSExecutable = "DBusKit";
+  NSMainNibFile = "";
+  NSPrincipalClass = "DBusKit";
+  Classes = 
+("DKArgument", "DKArrayTypeArgument", "DKContainerTypeArgument", "DKDictEntryTypeArgument", "DKDictionaryTypeArgument", "DKStructTypeArgument", "DKVariantTypeArgument", "DKEndpoint", "DKRunLoopContext", "DKWatcher", "DKEndpointManager", "DKInterface", "DKIntrospectionNode", "DKIntrospectionParserDelegate", "DKMessage", "DKMethod", "DKMethodCall", "DKMethodReturn", "DKNonAutoInvalidatingPort", "DKNotificationCenter", "DKObservable", "DKObservation", "DKDoubleNumber", "DKFloatNumber", "DKInt16Number", "DKInt32Number", "DKInt64Number", "DKInt8Number", "DKUInt16Number", "DKUInt32Number", "DKUInt64Number", "DKUInt8Number", "DKObjectPathNode", "DKProxyStandin", "DKRootObjectPathNode", "DKOutgoingProxy", "DKPort", "DKPortNameServer", "DKProperty", "DKPropertyAccessor", "DKPropertyMethod", "DKPropertyMutator", "DKDBus", "DKProxy", "DKSignal", "DKSignalEmission", "DKMutableStructArray", "DKStructArray", "DKVariant")
+  ;
+}

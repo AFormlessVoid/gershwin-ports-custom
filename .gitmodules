@@ -1,0 +1,3 @@
+[submodule "gershwin-universe-apps"]
+	path = gershwin-universe-apps
+	url = git@github.com:gershwin-desktop/gershwin-universe-apps.git

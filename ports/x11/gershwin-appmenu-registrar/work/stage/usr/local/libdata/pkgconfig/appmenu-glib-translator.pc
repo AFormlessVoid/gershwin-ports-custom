@@ -1,0 +1,11 @@
+prefix=/usr/local
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: appmenu-glib-translator
+Description: A translator from DBusMenu to GMenuModel
+Version: 25.04
+Requires: gio-unix-2.0 >= 2.52.0
+Requires.private: gdk-pixbuf-2.0
+Libs: -L${libdir} -lappmenu-glib-translator
+Cflags: -I${includedir} -I${includedir}/appmenu-glib-translator

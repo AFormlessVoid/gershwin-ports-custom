@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE gsdoc PUBLIC "-//GNUstep//DTD gsdoc 1.0.4//EN" "http://www.gnustep.org/gsdoc-1_0_4.dtd">
+<gsdoc base="DKPortNameServer" stylesheeturl="default-styles.css">
+  <head>
+    <title>DKPortNameServer class documentation</title>
+    <author name="Niels Grewe">
+      <email address="niels.grewe@halbordnung.de">
+        niels.grewe@halbordnung.de
+      </email>
+    </author>
+    <date>Generated at 2025-09-16 12:16:47 -0500</date>
+    <copy>2011 Free Software Foundation, Inc.</copy>
+  </head>
+  <body>
+    <front><contents /></front>
+    <chapter>
+      <heading>
+        Software documentation for the DKPortNameServer class
+      </heading>
+      <class name="DKPortNameServer" super="NSObject">
+        <declared>DBusKit/DKPortNameServer.h</declared>
+        <desc>
+          <em>Description forthcoming.</em>
+        </desc>
+        <method type="id" factory="yes">
+          <sel>sharedPortNameServerForBusType:</sel>
+          <arg type="DKDBusBusType">type</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="id" factory="yes">
+          <sel>sharedSessionBusPortNameServer</sel>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="id" factory="yes">
+          <sel>sharedSystemBusPortNameServer</sel>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="DKPort*">
+          <sel>portForName:</sel>
+          <arg type="NSString*">name</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="DKPortNameRegistrationStatus">
+          <sel>registerPort:</sel>
+          <arg type="DKPort*">port</arg>
+          <sel>name:</sel>
+          <arg type="NSString*">name</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="DKPortNameRegistrationStatus">
+          <sel>registerPort:</sel>
+          <arg type="DKPort*">port</arg>
+          <sel>name:</sel>
+          <arg type="NSString*">name</arg>
+          <sel>flags:</sel>
+          <arg type="DKPortNameFlags">flags</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+        <method type="void">
+          <sel>removePortForName:</sel>
+          <arg type="NSString*">name</arg>
+          <desc>
+            <em>Description forthcoming.</em>
+          </desc>
+        </method>
+      </class>
+    </chapter>
+  </body>
+</gsdoc>

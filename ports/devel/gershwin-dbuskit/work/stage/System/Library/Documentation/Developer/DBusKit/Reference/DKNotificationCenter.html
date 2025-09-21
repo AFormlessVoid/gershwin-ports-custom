@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DKNotificationCenter class documentation</title>
+<meta http-equiv="Content-Style-Type" content="text/css"/>
+<link rel="stylesheet" type="text/css" href="default-styles.css" media="screen" title="Normal" />
+  </head>
+  <body>
+    <h1><a name="title$DKNotificationCenter">DKNotificationCenter class documentation</a></h1>
+    <h3>Authors</h3>
+    <dl>
+      <dt>Niels Grewe (<a href="mailto:niels.grewe@halbordnung.de"><code>niels.grewe@halbordnung.de</code></a>)</dt>
+      <dd>
+      </dd>
+    </dl>
+    <p><b>Date:</b> Generated at 2025-09-16 12:16:47 -0500</p>
+    <p><b>Copyright:</b> (C) 2010 Free Software Foundation, Inc.</p>
+    <div>
+    </div>
+
+          <h1><a name="001000000000">
+        Software documentation for the DKNotificationCenter
+        class
+      </a></h1>
+    <h2 class="class"><a name="class$DKNotificationCenter">DKNotificationCenter</a> : NSObject</h2>
+    <blockquote class="declared">
+      <dl>
+        <dt><b>Declared in:</b></dt>
+        <dd>DBusKit/DKNotificationCenter.h</dd>
+      </dl>
+    </blockquote>
+    <div class="desc">
+      
+          The DKNotificationCenter class allows Objective-C objects
+          to watch for notifications from other D-Bus objects
+          (&apos;signals&apos; in the D-Bus dialect) or to post
+          notifications to D-Bus themselves. You can use
+          this class just as you would use an
+          NSNotificationCenter. Notification
+          names will be mapped to signals as follows: If the
+          introspection data for theD-Bus signal carries
+          an <code>org.gnustep.openstep.notification</code>
+          annotation,the value of this annotation will be
+          used as the name of the notification. Otherwise, the
+          notification name will be
+          <code>
+            DKSignal_&lt;InterfaceName&gt;_&lt;SignalName&gt;
+          </code>
+          . Additionally, D-Bus provides a rather sophisticated
+          matching mechanism to catch only signal emissions
+          with a specific signature. This mechanism is available
+          to applications through the
+          <a rel="gsdoc" href="#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$">-addObserver:selector:signal:interface:sender:destination:</a>
+ method and its more specific variants. Unfortunately, at this time, you need to specify identical match rules when removing the observer again. Every notification from D-Bus carries a reference to a proxy for the object emitting the signal and also guarantees that the following keys are present in the dictionary: 
+      <dl>
+        <dt>member</dt>
+        <dd>
+          The name of the signal being emitted (e.g. &quot;NameOwnerChanged&quot;
+        </dd>
+        <dt>interface</dt>
+        <dd>
+          The name of the interface to which the signal belongs. (e.g. &quot;org.freedesktop.DBus&quot;).
+        </dd>
+        <dt>sender</dt>
+        <dd>
+          The service emitting the signal (e.g. &quot;org.freedesktop.DBus&quot;). This will always be the unique name of the service, even if you registered the signal for another name.
+        </dd>
+        <dt>path</dt>
+        <dd>
+          The path to the object emitting the signal (e.g &quot;/org/freedesktop/DBus&quot;).
+        </dd>
+        <dt>destination</dt>
+        <dd>
+          The intended receiver of the signal, might be empty if the signal was broadcast, which is usually the case.
+        </dd>
+      </dl>
+       Additionally the userInfo dictionary will contain keys for every argument specified in the signal, named &quot;arg <em>N</em> &quot;. The dictionary might also contain further keys if <code>org.gnustep.openstep.notification.key</code> annotations were available.
+        
+    </div>
+    <p class="global_method_index">
+      <h3 class="index-section-header">Method summary</h3>
+      <ul>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter+centerForBusType$">+centerForBusType:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter+sessionBusCenter">+sessionBusCenter</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter+systemBusCenter">+systemBusCenter</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-addObserver$selector$name$object$">-addObserver:selector:name:object:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-addObserver$selector$name$sender$destination$">-addObserver:selector:name:sender:destination:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$">-addObserver:selector:signal:interface:sender:destination:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filter$atIndex$">-addObserver:selector:signal:interface:sender:destination:filter:atIndex:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filters$">-addObserver:selector:signal:interface:sender:destination:filters:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filtersAndIndices$,...">-addObserver:selector:signal:interface:sender:destination:filtersAndIndices:,...</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-postNotification$">-postNotification:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-postNotificationName$object$">-postNotificationName:object:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-postNotificationName$object$userInfo$">-postNotificationName:object:userInfo:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-postSignalName$interface$object$">-postSignalName:interface:object:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-postSignalName$interface$object$userInfo$">-postSignalName:interface:object:userInfo:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-registerNotificationName$asSignal$inInterface$">-registerNotificationName:asSignal:inInterface:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$">-removeObserver:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$name$object$">-removeObserver:name:object:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$name$sender$destination$">-removeObserver:name:sender:destination:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$signal$interface$object$">-removeObserver:signal:interface:object:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$">-removeObserver:signal:interface:sender:destination:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filter$atIndex$">-removeObserver:signal:interface:sender:destination:filter:atIndex:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filters$">-removeObserver:signal:interface:sender:destination:filters:</a></li>
+        <li><a rel="gsdoc" href="DKNotificationCenter.html#method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filtersAndIndices$,...">-removeObserver:signal:interface:sender:destination:filtersAndIndices:,...</a></li>
+      </ul>
+    </p>
+    <hr class="section-separator">
+<div class="method">
+    <h3><a name="method$DKNotificationCenter+centerForBusType$">centerForBusType:&nbsp;</a></h3>
+    + (id) <b>centerForBusType:</b> (DKDBusBusType)type;<br />
+    <div class="desc">
+      
+            Returns a notification center for the specified bus
+            <var>type</var>.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter+sessionBusCenter">sessionBusCenter&nbsp;</a></h3>
+    + (id) <b>sessionBusCenter</b>;<br />
+    <div class="desc">
+      
+            Returns a notification center for the session
+            message bus.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter+systemBusCenter">systemBusCenter&nbsp;</a></h3>
+    + (id) <b>systemBusCenter</b>;<br />
+    <div class="desc">
+      
+            Returns a notification center for the system
+            message bus.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-addObserver$selector$name$object$">addObserver:&nbsp;selector:&nbsp;name:&nbsp;object:&nbsp;</a></h3>
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)notifySelector<b> name:</b> (NSString*)notificationName<b> object:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender;<br />
+    <div class="desc">
+      
+            Watches the bus for signals matching
+            <var>notificationName</var> from <var>sender</var>.
+            If one of them is <code>nil</code>, the value will not
+            be used to restrict the notifications delivered to the
+            <var>observer</var>. Notifications are delivered by
+            calling <var>notifySelector</var> on
+            <var>observer</var> as a receiver. Neither can be
+            <code>nil</code> and <var>notifySelector</var> takes
+            exactly one argument (the notification).
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-addObserver$selector$name$sender$destination$">addObserver:&nbsp;selector:&nbsp;name:&nbsp;sender:&nbsp;destination:&nbsp;</a></h3>
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)notifySelector<b> name:</b> (NSString*)notificationName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-addObserver$selector$name$object$">-addObserver:selector:name:object:</a>
+ but allows to specify both <var>sender</var> and <var>destination</var> of the notification.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$">addObserver:&nbsp;selector:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;</a></h3>
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)notifySelector<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-addObserver$selector$name$sender$destination$">-addObserver:selector:name:sender:destination:</a>
+ but allows finer grained control over what signals to match. (E.g. it would be possible to request all notifications matching a particular interface only.).
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filter$atIndex$">addObserver:&nbsp;selector:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;filter:&nbsp;atIndex:&nbsp;</a></h3>
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)notifySelector<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination<b> filter:</b> (NSString*)filter<b> atIndex:</b> (NSUInteger)index;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$">-addObserver:selector:signal:interface:sender:destination:</a>
+ but additionally allows matching a single argument. Due to D-Bus constraints, <var>index</var> must be less than 64. The signal will only be matched if the value of the argument at <var>index</var> <em>is equal</em> to the value of <var>filter</var>. Additionally, this matching is limited to string arguments.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filters$">addObserver:&nbsp;selector:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;filters:&nbsp;</a></h3>
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)notifySelector<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination<b> filters:</b> (NSDictionary*)filters;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filter$atIndex$">-addObserver:selector:signal:interface:sender:destination:filter:atIndex:</a>
+ but allows matching more than one signal. The <var>filters</var> argument specifies a dictionary of filter strings keyed on the argument index (either as a NSNumber or a NSString). Keys that can&apos;t be mapped to a argument slot of the signal are silently ignored.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filtersAndIndices$,...">addObserver:&nbsp;selector:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;filtersAndIndices:&nbsp;,...</a></h3>
+    - (void) <b>addObserver:</b> (id)observer<b> selector:</b> (SEL)notifySelector<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination<b> filtersAndIndices:</b> (NSString*)firstFilter<b>,...</b>;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-addObserver$selector$signal$interface$sender$destination$filter$atIndex$">-addObserver:selector:signal:interface:sender:destination:filter:atIndex:</a>
+ but allows matching more than one signal. The argument list needs to be terminated by <code>nil</code>. If you want to match the first argument, specify that particular match as the first one and set <var>firstIndex</var> to <code>0</code>.
+            
+    </p>
+    <p>
+
+              <strong>NOTE:</strong> This method has been
+              deprecated in DBusKit 0.2 and will be removed
+              in a later version. Please use
+              -addObserver:signal:interface:sender:destination:filters:
+ instead.
+                </p>
+    <p>
+      
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-postNotification$">postNotification:&nbsp;</a></h3>
+    - (void) <b>postNotification:</b> (NSNotification*)notification;<br />
+    <div class="desc">
+      
+            Posts a <var>notification</var> to D-Bus. The
+            <var>notification</var> must fulfill the following
+            conditions:
+            
+      <ul>
+        <li>
+          
+                The object must already exported. (This is a
+                temporary limitation, subsequent versions of
+                DBusKit will automatically export an object if
+                it tries to post a <var>notification</var> to the
+                bus.)
+              
+        </li>
+        <li>
+          
+                The <var>notification</var> name must either
+                conform to the DKSignal_&lt;interface
+                name&gt;_&lt;member name&gt; format
+                or a mapping must be registered with the
+                <var>notification</var> center for this
+                <var>notification</var> name.
+              
+        </li>
+        <li>
+          
+                The userInfo dictionary must contain all the the
+                required argument keys, either with the key
+                mapped by the
+                org.gnustep.openstep.notification.key
+                annotation of the D-Bus interface, or with
+                the format <em>argN</em>, where <em>N</em> is the
+                index of the argument. If basic typed arguments
+                (strings, numeric types) are missing, these
+                are implicitly set to 0 (or the empty string).
+                Otherwise an exception is raised.
+              
+        </li>
+      </ul>
+      
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-postNotificationName$object$">postNotificationName:&nbsp;object:&nbsp;</a></h3>
+    - (void) <b>postNotificationName:</b> (NSString*)name<b> object:</b> (id)sender;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-postNotification$">
+              -postNotification:
+            </a>
+
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-postNotificationName$object$userInfo$">postNotificationName:&nbsp;object:&nbsp;userInfo:&nbsp;</a></h3>
+    - (void) <b>postNotificationName:</b> (NSString*)name<b> object:</b> (id)sender<b> userInfo:</b> (NSDictionary*)info;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-postNotification$">
+              -postNotification:
+            </a>
+
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-postSignalName$interface$object$">postSignalName:&nbsp;interface:&nbsp;object:&nbsp;</a></h3>
+    - (void) <b>postSignalName:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> object:</b> (id)sender;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-postNotification$">
+              -postNotification:
+            </a>
+
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-postSignalName$interface$object$userInfo$">postSignalName:&nbsp;interface:&nbsp;object:&nbsp;userInfo:&nbsp;</a></h3>
+    - (void) <b>postSignalName:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> object:</b> (id)sender<b> userInfo:</b> (NSDictionary*)info;<br />
+    <div class="desc">
+      
+            Similar to
+            <a rel="gsdoc" href="#method$DKNotificationCenter-postNotification$">
+              -postNotification:
+            </a>
+
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-registerNotificationName$asSignal$inInterface$">registerNotificationName:&nbsp;asSignal:&nbsp;inInterface:&nbsp;</a></h3>
+    - (BOOL) <b>registerNotificationName:</b> (NSString*)notificationName<b> asSignal:</b> (NSString*)signalName<b> inInterface:</b> (NSString*)interface;<br />
+    <div class="desc">
+      
+            This method allows notification names to be registered
+            for specific signals. E.g.:
+
+<pre>
+ [[DKNotificationCenter sessionBusCenter] registerNotificationName: @&quot;DKNameChanged&quot;
+                                                          asSignal: @&quot;NameOwnerChanged&quot;
+                                                       inInterface: @&quot;org.freedesktop.DBus&quot;];
+ </pre>
+      
+            would deliver all &quot; <code>NameOwnerChanged</code> &quot;
+            emissions as notifications named &quot;
+            <code>DKNameChanged</code> &quot;. The method returns
+            <code>NO</code> if the notification name has already
+            been registered.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$">removeObserver:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer;<br />
+    <div class="desc">
+      
+            Removes all observation activities involving the
+            <var>observer</var>.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$name$object$">removeObserver:&nbsp;name:&nbsp;object:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> name:</b> (NSString*)notificationName<b> object:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$name$sender$destination$">removeObserver:&nbsp;name:&nbsp;sender:&nbsp;destination:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> name:</b> (NSString*)notificationName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$signal$interface$object$">removeObserver:&nbsp;signal:&nbsp;interface:&nbsp;object:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> object:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$">removeObserver:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filter$atIndex$">removeObserver:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;filter:&nbsp;atIndex:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination<b> filter:</b> (NSString*)filter<b> atIndex:</b> (NSUInteger)index;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filters$">removeObserver:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;filters:&nbsp;</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination<b> filters:</b> (NSDictionary*)filters;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+          
+    </div>
+    <hr class="method-separator">
+</div>
+<div class="method">
+    <h3><a name="method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filtersAndIndices$,...">removeObserver:&nbsp;signal:&nbsp;interface:&nbsp;sender:&nbsp;destination:&nbsp;filtersAndIndices:&nbsp;,...</a></h3>
+    - (void) <b>removeObserver:</b> (id)observer<b> signal:</b> (NSString*)signalName<b> interface:</b> (NSString*)interfaceName<b> sender:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)sender<b> destination:</b> (<a rel="gsdoc" href="DKProxy.html#class$DKProxy">DKProxy</a>*)destination<b> filtersAndIndices:</b> (NSString*)firstFilter<b>,...</b>;<br />
+    <div class="desc">
+      
+            Removes all observation activities matching the
+            arguments specified. The match is inclusive.
+            Every observation for a more specific rule will also
+            be removed.
+            
+    </p>
+    <p>
+
+              <strong>NOTE:</strong> This method has been
+              deprecated in DBusKit 0.2 and will be removed
+              in a later version. Please use
+              <a rel="gsdoc" href="#method$DKNotificationCenter-removeObserver$signal$interface$sender$destination$filters$">-removeObserver:signal:interface:sender:destination:filters:</a>
+ instead.
+                </p>
+    <p>
+      
+          
+    </div>
+    <hr class="method-separator">
+</div>
+    <br />
+  </body>
+</html>

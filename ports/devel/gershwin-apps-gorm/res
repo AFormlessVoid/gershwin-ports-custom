@@ -1,0 +1,7 @@
+===>  Installing for gershwin-apps-gorm-20250628
+===>  Checking if gershwin-apps-gorm is already installed
+===>   Registering installation for gershwin-apps-gorm-20250628
+*** Error code 1
+
+Stop.
+make: stopped making "install" in /Users/Emma/Development/ghostbsd-gershwin-ports/ports-overlay/devel/gershwin-apps-gorm

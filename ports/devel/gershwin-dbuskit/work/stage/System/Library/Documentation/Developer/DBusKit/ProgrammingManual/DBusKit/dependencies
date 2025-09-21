@@ -1,0 +1,9 @@
+DBusKit/dependencies: \
+	../Headers/../Headers/DKPortNameServer.h \
+	../Headers/../Headers/DKProxy.h \
+	../Headers/../Headers/DKPort.h \
+	DBusKit.gsdoc \
+	../Headers/../Headers/DKStruct.h \
+	../Headers/../Headers/DKNumber.h \
+	../Headers/../Headers/DKNotificationCenter.h \
+	../Headers/../Headers/DKVariant.h

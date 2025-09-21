@@ -1,0 +1,9 @@
+
+{
+  CFBundleIdentifier = org.gnustep.colorschemesprefs;
+  NSExecutable = ColorSchemes;
+  NSMainNibFile = ColorSchemes;
+  NSPrefPaneIconFile = "ColorSchemes.tiff";
+  NSPrefPaneIconLabel = "Color Schemes";
+  NSPrincipalClass = ColorSchemes;
+}

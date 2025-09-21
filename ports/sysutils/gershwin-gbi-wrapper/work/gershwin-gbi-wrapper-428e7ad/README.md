@@ -1,0 +1,1 @@
+# ghostbsd-gbi-wrapper

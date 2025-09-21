@@ -1,0 +1,9 @@
+{
+  NOTE = "Automatically generated, do not edit!";
+  NSExecutable = "GSSpeechServer";
+  NSMainNibFile = "";
+  NSMainStoryboardFile = "";
+  GSMainMarkupFile = "";
+  NSIcon = "SpeechSynthesizer.png";
+  NSPrincipalClass = "NSApplication";
+}

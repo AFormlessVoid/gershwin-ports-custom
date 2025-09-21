@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- © 2005-2006 Christopher Armstrong.
+
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2, as published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A copy of the license is included in the section entitled "GNU Free Documentation License".
+
+This documentation is provided on an "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND USEFULNESS
+OF THE DOCUMENTATION IS WITH YOU (THE LICENSEE). IN NO EVENT WILL THE COPYRIGHT
+HOLDERS BE LIABLE FOR DAMAGES, INCLUDING ANY DIRECT, INDIRECT,
+SPECIAL, GENERAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF
+THE USE OR INABILITY TO USE THIS DOCUMENTATION (INCLUDING BUT NOT
+LIMITED TO LOSS OF DATA, USE, OR PROFITS; PROCUREMENT OF SUBSTITUTE
+GOODS AND SERVICES; OR BUSINESS INTERUPTION) HOWEVER CAUSED, EVEN
+IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<title>basicconcepts (Using the GNUstep AppKit 0.1)</title>
+
+<meta name="description" content="basicconcepts (Using the GNUstep AppKit 0.1)">
+<meta name="keywords" content="basicconcepts (Using the GNUstep AppKit 0.1)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="conceptindex.html" rel="index" title="conceptindex">
+<link href="index.html" rel="up" title="Top">
+<link href="gnustepapplications.html" rel="next" title="gnustepapplications">
+<link href="Introduction.html" rel="prev" title="Introduction">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="basicconcepts">
+<div class="nav-panel">
+<p>
+Next: <a href="gnustepapplications.html" accesskey="n" rel="next">GNUstep Applications</a>, Previous: <a href="Introduction.html" accesskey="p" rel="prev">Introduction</a>, Up: <a href="index.html" accesskey="u" rel="up">Using the GNUstep AppKit</a> &nbsp; [<a href="conceptindex.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Basic-Concepts"><span>2 Basic Concepts<a class="copiable-link" href="#Basic-Concepts"> &para;</a></span></h2>
+
+<p>Throughout this manual, we refer to a number of concepts that you will need to be familiar with. It may be useful to at least glance over this section and make sure you are familiar with the concepts presented.
+</p>
+<dl class="table">
+<dt><i class="i">application wrapper (or appwrapper)</i></dt>
+<dd><p>GNUstep applications rarely consist of just an executable file. They often contain interface files, property lists and other resources such as images. These are bundled together with the executable into a directory known as an <em class="dfn">application wrapper</em>. To launch applications, you use the <code class="command">openapp</code> command.
+</p>
+</dd>
+<dt><i class="i">delegate</i></dt>
+<dd>
+<p>A <em class="dfn">delegate</em> usually refers to an object that handles certain events and methods on behalf of another object. The methods a delegate should implement are declared as either a formal or informal protocol. 
+</p>
+<p>Many of the view and control classes within the AppKit allow you to supply delegate objects to help them make decisions about different things such as what data to display, how to handle events, whether to permit the user to select things, handling drag and drop, etc.
+</p>
+</dd>
+<dt><i class="i">formal protocol</i></dt>
+<dd>
+<p>A <em class="dfn">formal protocol</em> is a protocol that requires you to implement all the methods that are listed within it. They are used much less often that informal protocols in the AppKit.
+</p>
+<p>Formal protocols are declared using their own statement, the <code class="code">@protocol</code> identifier. You implement a formal protocol by placing it&rsquo;s name in arrow brackets (&rsquo;&lt;&rsquo; and &rsquo;&gt;&rsquo;) and listing its methods in your interface declaration.
+</p>
+</dd>
+<dt><i class="i">informal protocol</i></dt>
+<dd><p>Objective-C can have both <em class="dfn">formal</em> and <em class="dfn">informal</em> protocols. Informal protocols don&rsquo;t require you to implement all of their methods.
+</p>
+<p>Informal protocols are declared as a category of <code class="code">NSObject</code>. You implement them in your own class by simply declaring and implementing the methods in the protocol you wish to. Always check the documentation of the classes that use the protocol to see which methods you should implement (usually at least one of them is mandatory).
+</p>
+</dd>
+<dt><i class="i">nib file</i></dt>
+<dd><p><em class="dfn">nib files</em> are your program&rsquo;s interface files, which contain definitions of all the windows, controls and menus as well as their connections to classes from your application. They have the extension <samp class="file">.gorm</samp>.
+</p>
+<p>See see <a class="pxref" href="applicationmakefiles.html#Interface-Files">Interface Files</a> for more information.
+</p>
+</dd>
+<dt><i class="i">notification</i></dt>
+<dd><p>A <em class="dfn">notification</em> is an indicator of a certain event. Notifications are objects posted to a <em class="dfn">notification center</em>. Other objects may register with a notification center to receive notifications.
+</p>
+<p>For more information about notifications, refer to the <cite class="cite">GNUstep Base Programming Manual</cite>.
+</p>
+</dd>
+</dl>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="gnustepapplications.html">GNUstep Applications</a>, Previous: <a href="Introduction.html">Introduction</a>, Up: <a href="index.html">Using the GNUstep AppKit</a> &nbsp; [<a href="conceptindex.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

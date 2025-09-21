@@ -1,0 +1,9 @@
+
+{
+  CFBundleIdentifier = org.gnustep.fontmodule;
+  NSExecutable = FontModule;
+  NSMainNibFile = FontModule;
+  NSPrefPaneIconFile = "FontModule.tiff";
+  NSPrefPaneIconLabel = Fonts;
+  NSPrincipalClass = FontModule;
+}
