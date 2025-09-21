@@ -1,9 +1,0 @@
-.gwdir
-*.swp
-*~
-*.app
-*.bundle
-*.framework
-*obj
-derived_src
-ProjectCenter

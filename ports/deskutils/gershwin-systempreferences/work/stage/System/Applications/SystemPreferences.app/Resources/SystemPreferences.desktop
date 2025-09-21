@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Categories=X-GNUstep;
-Name=SystemPreferences
-StartupWMClass=SystemPreferences
-Comment=GNUstep System Preferences
-Icon=/System/Applications/SystemPreferences.app/Resources/SystemPreferences.tiff
-Exec=//System/Library//Tools/openapp SystemPreferences

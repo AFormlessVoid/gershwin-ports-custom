@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Categories=X-GNUstep;
-Name=TextEdit
-StartupWMClass=TextEdit
-Comment=an OpenStep text editor
-Icon=/Local/Applications/TextEdit.app/Resources/Edit.tiff
-Exec=//System/Library//Tools/openapp TextEdit

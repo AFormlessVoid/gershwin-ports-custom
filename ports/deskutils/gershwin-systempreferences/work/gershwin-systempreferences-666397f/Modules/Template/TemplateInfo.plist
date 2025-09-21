@@ -1,9 +1,0 @@
-
-{
-  CFBundleIdentifier = org.gnustep.templatemodule;
-  NSExecutable = TemplateModule;
-  NSMainNibFile = TemplateModule;
-  NSPrefPaneIconFile = "TemplateModule.tiff";
-  NSPrefPaneIconLabel = Test;
-  NSPrincipalClass = TemplateModule;
-}

@@ -1,6 +1,0 @@
-Name: gnustep-gui
-Description: The GNUstep gui library is a library of graphical user interface classes written completely in the Objective-C language; the classes are based upon Apple's Cocoa framework (which came from the OpenStep specification).
-Version: 0.32.0
-URL: https://github.com/gnustep/libs-gui/
-Libs: -L/usr/local/lib -pthread -fexceptions -rdynamic -fobjc-runtime=gnustep-2.2 -fblocks -L/Users/Emma/Development/ghostbsd-gershwin-ports/ports-overlay/x11-toolkits/gershwin-libs-gui/work/Library/Libraries -L/Local/Library/Libraries -L/Network/Library/Libraries -L/System/Library/Libraries -L/usr/local/lib -lgnustep-base -pthread -lobjc -lm
-Cflags:  -MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNUSTEP_RUNTIME=1 -D_NONFRAGILE_ABI=1 -DGNUSTEP_BASE_LIBRARY=1 -fno-strict-aliasing -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -pthread -fPIC -Wall -DGSWARN -DGSDIAGNOSE -Wno-import -O2 -pipe -fstack-protector-strong -fno-strict-aliasing -O2 -pipe -fstack-protector-strong -fno-strict-aliasing -Wno-import -I/usr/local/include -fobjc-runtime=gnustep-2.2 -fblocks -fconstant-string-class=NSConstantString -I. -I/Users/Emma/Development/ghostbsd-gershwin-ports/ports-overlay/x11-toolkits/gershwin-libs-gui/work/Library/Headers -I/Local/Library/Headers -I/Network/Library/Headers -I/System/Library/Headers -I/usr/local/include

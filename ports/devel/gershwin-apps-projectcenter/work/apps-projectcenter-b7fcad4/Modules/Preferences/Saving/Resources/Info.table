@@ -1,6 +1,0 @@
-{
-  Type = "Preferences";
-  Name = "Saving";
-  Description = "Project saving options.";
-  PrincipalClassName = "PCSavingPrefs";
-}

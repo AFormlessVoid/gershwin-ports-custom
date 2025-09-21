@@ -1,6 +1,0 @@
-{
-  Type = "Preferences";
-  Name = "Build";
-  Description = "Preferences for Project Build.";
-  PrincipalClassName = "PCBuildPrefs";
-}

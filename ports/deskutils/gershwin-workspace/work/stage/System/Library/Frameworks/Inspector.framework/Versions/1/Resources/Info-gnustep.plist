@@ -1,9 +1,0 @@
-{
-  NOTE = "Automatically generated, do not edit!";
-  NSExecutable = "Inspector";
-  NSMainNibFile = "";
-  NSPrincipalClass = "Inspector";
-  Classes = 
-("Inspector", "Attributes", "Sizer", "Contents", "GenericView", "TextViewer", "Tools", "Annotations", "IconView", "TimeDateView")
-  ;
-}

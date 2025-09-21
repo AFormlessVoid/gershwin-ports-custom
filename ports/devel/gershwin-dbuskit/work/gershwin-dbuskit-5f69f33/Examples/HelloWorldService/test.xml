@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<node name="/">
-	<interface name="org.gnustep.test">
-		<method name="description">
-			<arg type="s" name="data" direction="out"/>
-		</method>
-                <signal name="notification"/>
-	</interface>
-</node>

@@ -1,8 +1,0 @@
-{
-  CFBundleIdentifier = org.gnustep.filesystemmodule;
-  NSExecutable = FileSystem;
-  NSMainNibFile = FileSystem;
-  NSPrefPaneIconFile = "FileSystem.tiff";
-  NSPrefPaneIconLabel = "File System";
-  NSPrincipalClass = FileSystem;
-}

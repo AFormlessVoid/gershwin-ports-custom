@@ -1,9 +1,0 @@
-{
-    ApplicationName = "Installer";
-    ApplicationDescription = "Installer Web Browser";
-    ApplicationRelease = "1.0";
-    NSExecutable = "Installer";
-    CFBundleIconFile = "Installer.png";
-    NSPrincipalClass = "NSApplication";
-    LSUIElement = "NO";
-}
